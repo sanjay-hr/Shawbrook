@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 
     },
     skipContainer:{
-        marginTop: 15,
+        marginTop: 40,
         alignItems:'flex-end',
         paddingRight:15
     }
@@ -138,7 +138,7 @@ const IntroSlider =({navigation})=> {
                                 <TouchableOpacity  onPress={() => { slider.goToSlide(activeIndex+1)}}>
                                     <Text style={styles.label}>{'Next >'}</Text>
                                 </TouchableOpacity> :
-                                <TouchableOpacity  onPress={() => {navigation.navigate('home')}}>
+                                <TouchableOpacity  onPress={() => {navigation.navigate('login')}}>
                                     <Text style={styles.label}>{'Done'}</Text>
                                 </TouchableOpacity>
                         }
@@ -160,7 +160,7 @@ const IntroSlider =({navigation})=> {
                     </View>:
                     <TouchableOpacity
                         style={styles.skipContainer}
-                        onPress={() => {navigation.navigate('home')}}>
+                        onPress={() => {navigation.navigate('login')}}>
                         <Text style={styles.label}>{'Skip >'}</Text>
                     </TouchableOpacity>
             }

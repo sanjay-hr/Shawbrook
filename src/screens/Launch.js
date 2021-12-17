@@ -24,6 +24,8 @@ export default function Launch({navigation}) {
           buttonTextColor="#d3096b"
           textFontSize={18}
           buttonBorderWidth={1}
+          buttonPadding={5}
+          buttonMarginTop={10}
           onPress={() => navigation.navigate('introSlider')}
         />
         <CustomButton
@@ -32,6 +34,8 @@ export default function Launch({navigation}) {
           buttonTextColor="#ffff"
           textFontSize={18}
           buttonBorderWidth={1}
+          buttonPadding={5}
+          buttonMarginTop={10}
           buttonBorderColor="#ffff"
           onPress={() => navigation.navigate('login')}
         />
@@ -51,7 +55,11 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 50,
   },
   buttonContainer: {
+    padding:15,
+    flex:1,
+    flexDirection:'column',
     width: '100%',
     justifyContent: 'flex-end',
+    marginBottom:30
   },
 });

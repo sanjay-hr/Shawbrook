@@ -12,6 +12,7 @@ const CustomButton = ({
   textFontSize,
   buttonPadding,
   buttonMargin,
+    buttonMarginTop,
 }) => (
   <View style={[styles.container, {padding: buttonPadding || 30}]}>
     <TouchableOpacity
@@ -25,6 +26,7 @@ const CustomButton = ({
         borderWidth: buttonBorderWidth,
         padding: buttonPadding,
         margin: buttonMargin,
+        marginTop :buttonMarginTop || 50
       }}>
       <Text
         style={{
@@ -51,7 +53,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#d3096b',
     width: '100%',
     height: 45,
-    marginTop: 50,
   },
   text: {
     alignItems: 'center',

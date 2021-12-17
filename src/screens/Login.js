@@ -8,17 +8,17 @@ import CustomLineButton from '../components/CustomLineButton';
 function Login({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
-      <Image
-        source={require('../logo/shawbrookBank.png')}
-        style={styles.logo}></Image>
-      <CustomTextInput placeholder={'Customer number'}></CustomTextInput>
-      <CustomTextInput placeholder={'*******'}></CustomTextInput>
+        <Image
+            source={require('../logo/shawbrookBank.png')}
+            style={styles.logo}/>
+      <CustomTextInput placeholder={'Customer number'}/>
+      <CustomTextInput placeholder={'*******'}/>
       <CustomButton
-        title="Sign in"
-        textFontSize={30}
-        onPress={() => navigation.navigate('home')}></CustomButton>
-      <CustomLineButton title="Forgot password?"></CustomLineButton>
-      <CustomLineButton title="I don't know my sign in details"></CustomLineButton>
+          title="Sign in"
+          textFontSize={30}
+          onPress={() => navigation.navigate('home')}/>
+      <CustomLineButton title="Forgot password?"/>
+      <CustomLineButton title="I don't know my sign in details"/>
     </SafeAreaView>
   );
 }

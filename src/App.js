@@ -9,10 +9,12 @@ import Login from './screens/Login';
 
 // logged in
 import Home from './screens/Home';
-import RecipientList from "./screens/RecipientList";
+import Profile from "./screens/Profile";
 import AddAccount from "./screens/AddAccount";
 
 import { Image } from "react-native";
+import IntroSlider from "./screens/IntroSlider";
+
 
 const Stack = createStackNavigator();
 
@@ -30,24 +32,25 @@ function App() {
                                 />
                             ),
                           }} />
-          <mainTab.Screen name="Transaction" component={RecipientList}
+          <mainTab.Screen name="Transaction" component={AddAccount}
                           options={{
                             tabBarIcon: ({ focused }) => (
                                 <Image
                                     style={{width:20,height:20, marginHorizontal:10}}
                                     source={require('./logo/transaction.png')}
+
                                 />
                             ),
                           }}/>
-          <mainTab.Screen name="Recipient" component={AddAccount}
-                          options={{
-                            tabBarIcon: ({ focused }) => (
-                                <Image
-                                    style={{width:20,height:20, marginHorizontal:10}}
-                                    source={require('./logo/parcel.png')}
-                                />
-                            ),
-                          }}/>
+            <mainTab.Screen name="Profile" component={Profile}
+                            options={{
+                                tabBarIcon: ({ focused }) => (
+                                    <Image
+                                        style={{width:20,height:20, marginHorizontal:10}}
+                                        source={require('./logo/parcel.png')}
+                                    />
+                                ),
+                            }}/>
         </mainTab.Navigator>
     );
   }
@@ -56,6 +59,7 @@ function App() {
   return (
       <NavigationContainer>
               <Stack.Navigator screenOptions={{headerShown: false}}>
+                  <Stack.Screen name="introSlider" component={IntroSlider} />
                   <Stack.Screen name="login" component={Login} />
                   <Stack.Screen name="home" component={TabStackScreen} />
               </Stack.Navigator>

@@ -29,7 +29,7 @@ const AUTHORS = [
   },
 ];
 
-function Transaction({navigation}) {
+function Profile({navigation}) {
   const TransactionInfo = ({ name, amount }) => (
     <View style={styles.item}>
       <Text style={styles.title}>{'Recipient : ' + name}</Text>
@@ -44,22 +44,22 @@ function Transaction({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.headerRecipient}>Recipients List</Text>
-        <TouchableOpacity style={styles.logout} onPress={() => navigation.replace('login')}>
+        <Text style={styles.headerRecipient}>Shawbrook</Text>
+        <TouchableOpacity style={styles.logout} onPress={() => navigation.replace('introSlider')}>
           <Text>Logout</Text>
         </TouchableOpacity>
       </View>
-      <FlatList
-        data={AUTHORS}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
+      {/*<FlatList*/}
+      {/*  data={AUTHORS}*/}
+      {/*  renderItem={renderItem}*/}
+      {/*  keyExtractor={item => item.id}*/}
+      {/*/>*/}
     </SafeAreaView>
   );
 }
 
 
-export default Transaction;
+export default Profile;
 
 const styles = StyleSheet.create({
   container: {

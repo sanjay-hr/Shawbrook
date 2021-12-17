@@ -25,17 +25,17 @@ const styles = StyleSheet.create({
         paddingTop:100,
         fontSize: 44,
         fontWeight: 'bold',
-        color:'#cd3567'
+        color:'#d3096b'
     },
     paragraph: {
         fontSize: 20,
-        color:'#cd3567',
+        color:'#d3096b',
         width: 280,
         paddingTop:25
     },
     label:{
         fontSize: 17,
-        color:'#cd3567'
+        color:'#d3096b'
     },
     labelView:{
         fontSize: 17,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         height: 10,
         borderRadius: 5,
         marginHorizontal: 4,
-        backgroundColor: '#cd3567'
+        backgroundColor: '#d3096b'
     },
     buttonContainer: {
         flexDirection: 'row',

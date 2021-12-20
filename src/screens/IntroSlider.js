@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, StatusBar, TouchableOpacity, SafeAreaView} from 'react-native';
+import {StyleSheet, View, Text, StatusBar, TouchableOpacity, SafeAreaView, Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 
 const headerString = 'Lorem ipsum'
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
         marginVertical: 30,
     },
     header: {
-        paddingTop:100,
         fontSize: 44,
         fontWeight: 'bold',
         color:'#d3096b'
@@ -86,10 +85,16 @@ const styles = StyleSheet.create({
 
 const IntroSlider =({navigation})=> {
     const [hideSkip, setHideSkip] = useState(false);
-    const renderItem = ({ item }) => {
+    const renderItem = ({ item,index }) => {
         return (
             <View style={styles.slide}>
-                <View style={styles.wrapper}>
+                <View style={[styles.wrapper
+                    // ,{marginTop:index !== 3?100:0}
+                ]}>
+                    {
+                        // index === 3 &&
+                        <Image source={require('../logo/mobile-slider.png')}/>
+                    }
                     <Text style={styles.header}>{headerString}</Text>
                     <Text style={styles.paragraph}>{contentString}</Text>
                     <Text style={styles.paragraph}>{contentString}</Text>
@@ -128,10 +133,13 @@ const IntroSlider =({navigation})=> {
                     </View>
                     <View style={styles.buttonContainer}>
                         {
-                            activeIndex !==0 ?
+                            activeIndex === 0 ?
+                                <TouchableOpacity  onPress={() => {navigation.goBack() }}>
+                                    <Text style={styles.label}>{'< Back'}</Text>
+                                </TouchableOpacity> :
                                 <TouchableOpacity  onPress={() => { slider.goToSlide(activeIndex-1)}}>
                                     <Text style={styles.label}>{'< Back'}</Text>
-                                </TouchableOpacity> :<View/>
+                                </TouchableOpacity>
                         }
                         {
                             activeIndex !== blankData.length -1 ?

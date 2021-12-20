@@ -1,14 +1,11 @@
 import React from 'react';
-import styled from 'styled-components/native';
-
-const Container = styled.View``;
-const Text = styled.Text``;
+import {Text, View} from "react-native";
 
 function Loading() {
   return (
-    <Container>
+    <View>
       <Text>Loading...</Text>
-    </Container>
+    </View>
   );
 }
 

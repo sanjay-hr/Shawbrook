@@ -45,7 +45,7 @@ function Profile({navigation}) {
     <SafeAreaView style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.headerRecipient}>Shawbrook</Text>
-        <TouchableOpacity style={styles.logout} onPress={() => navigation.replace('introSlider')}>
+        <TouchableOpacity style={styles.logout} onPress={() => navigation.popToTop('launch')}>
           <Text>Logout</Text>
         </TouchableOpacity>
       </View>

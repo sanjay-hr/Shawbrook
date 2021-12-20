@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, StatusBar, TouchableOpacity, SafeAreaView, Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import TextButton from "../components/TextButton";
 
 const headerString = 'Lorem ipsum'
 const contentString = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
@@ -10,6 +11,10 @@ const styles = StyleSheet.create({
     slide: {
         flex: 1,
         alignItems: 'center',
+    },
+    container:{
+        flex: 1,
+        backgroundColor:'white'
     },
     title: {
         fontSize: 22,
@@ -75,16 +80,17 @@ const styles = StyleSheet.create({
 
     },
     skipContainer:{
-        marginTop: 40,
+        marginTop: 20,
         alignItems:'flex-end',
-        paddingRight:15
+        paddingRight:10,
+        height:40
     }
 
 });
 
 
 const IntroSlider =({navigation})=> {
-    const [hideSkip, setHideSkip] = useState(false);
+    const [showSkip, setShowSkip] = useState(true);
     const renderItem = ({ item,index }) => {
         return (
             <View style={styles.slide}>
@@ -102,7 +108,7 @@ const IntroSlider =({navigation})=> {
             </View>
         );
     }
-    const keyExtractor = (item: Item) => item.title;
+    const keyExtractor = (item) => item.title;
 
 
     let slider = undefined;
@@ -110,9 +116,9 @@ const IntroSlider =({navigation})=> {
 
     const  renderPagination = (activeIndex: number) => {
         if(activeIndex === blankData.length - 1){
-            setHideSkip(true)
+            setShowSkip(false)
         }else{
-            setHideSkip(false)
+            setShowSkip(true)
         }
         return (
             <View style={styles.paginationContainer}>
@@ -132,46 +138,35 @@ const IntroSlider =({navigation})=> {
                             ))}
                     </View>
                     <View style={styles.buttonContainer}>
-                        {
-                            activeIndex === 0 ?
-                                <TouchableOpacity  onPress={() => {navigation.goBack() }}>
-                                    <Text style={styles.label}>{'< Back'}</Text>
-                                </TouchableOpacity> :
-                                <TouchableOpacity  onPress={() => { slider.goToSlide(activeIndex-1)}}>
-                                    <Text style={styles.label}>{'< Back'}</Text>
-                                </TouchableOpacity>
-                        }
-                        {
-                            activeIndex !== blankData.length -1 ?
-                                <TouchableOpacity  onPress={() => { slider.goToSlide(activeIndex+1)}}>
-                                    <Text style={styles.label}>{'Next >'}</Text>
-                                </TouchableOpacity> :
-                                <TouchableOpacity  onPress={() => {navigation.navigate('login')}}>
-                                    <Text style={styles.label}>{'Done'}</Text>
-                                </TouchableOpacity>
-                        }
+                        <TextButton label={'< Back'}
+                                      onPress={() => activeIndex === 0 ?
+                                          navigation.goBack() :
+                                          slider.goToSlide(activeIndex-1)
+                                      }/>
+                        <TextButton label={ activeIndex !== blankData.length -1 ? 'Next >' : 'Done'}
+                                      onPress={() => activeIndex !== blankData.length -1 ?
+                                          slider.goToSlide(activeIndex+1) :
+                                          navigation.navigate('login')
+                                      }/>
                     </View>
                 </SafeAreaView>
-
             </View>
         );
     };
 
 
     return (
-        <View style={{flex: 1, backgroundColor:'white'}}>
+        <View style={styles.container}>
             <StatusBar translucent backgroundColor="transparent" />
-            {
-                hideSkip ?
-                    <View style={styles.skipContainer}>
-                        <Text style={styles.labelView}>{' '}</Text>
-                    </View>:
-                    <TouchableOpacity
-                        style={styles.skipContainer}
-                        onPress={() => {navigation.navigate('login')}}>
-                        <Text style={styles.label}>{'Skip >'}</Text>
-                    </TouchableOpacity>
-            }
+            <View style={styles.skipContainer}>
+                {
+                    showSkip &&
+                    <TextButton
+                        label={'Skip >'}
+                        onPress={()=>navigation.navigate('login')}
+                        style={styles.skipContainer}/>
+                }
+            </View>
             <AppIntroSlider
                 keyExtractor={keyExtractor}
                 dotClickEnabled={false}
@@ -185,3 +180,7 @@ const IntroSlider =({navigation})=> {
 }
 
 export default IntroSlider
+
+
+
+

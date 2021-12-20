@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   Text,
+  View,
   TouchableOpacity,
 } from 'react-native';
 import CustomTextInput from '../components/CustomTextInput';
@@ -15,10 +16,16 @@ import CustomLineButton from '../components/CustomLineButton';
 function Login({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity 
+      style={{alignSelf: 'flex-end', paddingRight: 30}}
+      onPress={()=> navigation.popToTop('launch')}>
+        <Image source={require('../logo/close.png')} />
+      </TouchableOpacity>
       <Image
         source={require('../logo/shawbrookBank.png')}
         style={styles.logo}
       />
+
       <CustomTextInput placeholder={'Customer number'} />
       <CustomTextInput placeholder={'*******'} />
       <TouchableOpacity
@@ -61,7 +68,7 @@ const styles = StyleSheet.create({
     borderRadius: 70 / 2,
   },
   logo: {
-    marginTop: StatusBar.currentHeight || 50,
+    marginTop: StatusBar.currentHeight || 20,
     marginBottom: 50,
   },
 });

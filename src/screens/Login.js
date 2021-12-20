@@ -1,6 +1,13 @@
 import React from 'react';
 
-import {SafeAreaView, StatusBar, StyleSheet, Image} from 'react-native';
+import {
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Image,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import CustomTextInput from '../components/CustomTextInput';
 import CustomButton from '../components/CustomButton';
 import CustomLineButton from '../components/CustomLineButton';
@@ -8,17 +15,29 @@ import CustomLineButton from '../components/CustomLineButton';
 function Login({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
-        <Image
-            source={require('../logo/shawbrookBank.png')}
-            style={styles.logo}/>
-      <CustomTextInput placeholder={'Customer number'}/>
-      <CustomTextInput placeholder={'*******'}/>
+      <Image
+        source={require('../logo/shawbrookBank.png')}
+        style={styles.logo}
+      />
+      <CustomTextInput placeholder={'Customer number'} />
+      <CustomTextInput placeholder={'*******'} />
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#ffff',
+          height: 30,
+          justifyContent: 'center',
+          alignSelf: 'flex-end',
+          paddingRight: 30,
+        }}>
+        <Text style={{color: '#d3096b'}}>Forgot password?</Text>
+      </TouchableOpacity>
       <CustomButton
-          title="Sign in"
-          textFontSize={30}
-          onPress={() => navigation.navigate('home')}/>
-      <CustomLineButton title="Forgot password?"/>
-      <CustomLineButton title="I don't know my sign in details"/>
+        title="Sign in"
+        textFontSize={28}
+        onPress={() => navigation.navigate('home')}
+      />
+      <CustomLineButton title="I don't know my sign in details" />
+      <CustomLineButton title="Don't have an account? Sign up" />
     </SafeAreaView>
   );
 }
@@ -43,6 +62,6 @@ const styles = StyleSheet.create({
   },
   logo: {
     marginTop: StatusBar.currentHeight || 50,
-    marginBottom: 80,
+    marginBottom: 50,
   },
 });
